@@ -34,7 +34,7 @@ let newMovieWindow;
 function createNewMovieWindow() {
   newMovieWindow = new BrowserWindow({
     width: 800,
-    height: 620,
+    height: 500,
     parent: mainWindow,
     modal: true, //This makes the parent window unfocusable until this one is closed
     webPreferences: { nodeIntegration: true } //This allows for node syntax on the front-end ( using 'require' for example)
@@ -68,6 +68,20 @@ ipcMain.on("movie:add", async (_, movie) => {
   if (success) {
     mainWindow.webContents.send("movie:getAll", data);
     newMovieWindow.close();
+  }
+});
+
+ipcMain.on("movie:remove", (_, id) => {
+  const result = dialog.showMessageBoxSync(mainWindow, {
+    type: "warning",
+    title: "Remove Movie",
+    message: "Are You sure you wnat to remove this movie ",
+    buttons: ["Yes", "No"]
+  });
+  console.log(result);
+  if (result === 0) {
+    moviesData.removeMovie(id);
+    mainWindow.webContents.send("movie:remove");
   }
 });
 

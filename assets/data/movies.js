@@ -18,5 +18,10 @@ module.exports = {
     const newMovies = [movie, ...data];
     store.set("movies", newMovies);
     return { success: true, data: store.get("movies") };
+  },
+  removeMovie: id => {
+    const movies = store.get("movies", []);
+    const newMovies = movies.filter(movie => movie.id !== id);
+    store.set("movies", newMovies);
   }
 };

@@ -12,6 +12,12 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="assets/css/index.css" />
+    <style>
+      body {
+        background: rgb(14, 13, 13);
+        color: #fff;
+      }
+    </style>
   </head>
   <body>
     <div class="container pt-5">
@@ -21,25 +27,44 @@
       <form onsubmit="handleSubmit(event)">
         <div class="form-group">
           <label for="movieName">Movie Name:</label>
-          <input type="text" class="form-control" id="movieName" required />
+          <input type="text" class="form-control " id="movieName" required />
         </div>
         <div class="form-group row">
           <div class="col-9">
             <label for="movieName">Movie Image:</label>
-            <input type="text" class="form-control" id="movieImage" required />
+            <input
+              type="text"
+              class="form-control "
+              id="movieImage"
+              required
+              placeholder="online image or a local one"
+            />
           </div>
           <div class="d-flex mt-4 ">
             <button
               type="button"
-              class="btn btn-secondary"
+              class="btn btn-secondary btn-sm"
               onclick="openImage()"
             >
               Browse
             </button>
           </div>
         </div>
-
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="form-group slidecontainer">
+          <label for="movieName">Your Personnal Rating:</label>
+          <input
+            type="range"
+            class="slider"
+            id="movieRating"
+            required
+            min="0"
+            max="5"
+            step="1"
+          />
+          <span id="rangeOutput" class="h4 ml-5 mr-2  text-primary"></span>
+          <span class="text-secondary">/5 stars</span>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg">Add Now</button>
       </form>
     </div>
 

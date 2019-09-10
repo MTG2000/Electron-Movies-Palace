@@ -1,8 +1,31 @@
 body {
-  background: linear-gradient(40deg, #ddd, #eee);
+  /* background: linear-gradient(
+    40deg,
+    rgb(131, 131, 131),
+    rgba(32, 19, 29, 0.63)
+  ); */
   min-height: 100vh;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif "Trebuchet MS", sans-serif;
+}
+
+.overlayImage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.overlayImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  filter: grayscale(0.5);
+}
+nav {
+  border-bottom: solid 2px #bc069d;
 }
 
 .btn-primary {
@@ -21,11 +44,7 @@ body {
   width: 250px;
   height: 320px;
   position: relative;
-  box-shadow: 8px 8px 15px #9d9d9d;
-}
-
-.movie-card:hover {
-  cursor: pointer;
+  box-shadow: 5px 8px 10px #4d0053;
 }
 
 .movie-card img {
@@ -48,4 +67,74 @@ body {
 
 .movie-card:hover .overlay {
   opacity: 1;
+}
+
+.movie-card i {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  transition-duration: 0.4s;
+}
+.movie-card i:hover {
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+/* Slider Range style */
+.slidecontainer {
+  width: 100%; /* Width of the outside container */
+}
+
+/* The slider itself */
+.slider {
+  -webkit-appearance: none; /* Override default CSS styles */
+  appearance: none;
+  width: 80%;
+  height: 10px; /* Specified height */
+  background: #6d6c6d; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: 0.2s; /* 0.2 seconds transition on hover */
+  transition: opacity 0.2s;
+  border-radius: 23px;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #bc069d; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+  border-radius: 50%;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #bc069d; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.form-control {
+  background-color: #3333334d;
+  border: 0;
+  border-bottom: solid 2px #bc069d;
+}
+
+.form-control:focus {
+  background-color: transparent;
+  border: 0;
+  border-bottom: solid 1.5px #bc069d;
+  color: #eee;
+}
+
+.form-control::placeholder {
+  color: rgb(156, 155, 155);
 }

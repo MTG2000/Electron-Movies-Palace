@@ -7,6 +7,10 @@ ipcRenderer.on("movie:getAll", (_, data) => {
 // Request Movies from main proccess
 ipcRenderer.send("movie:getAll");
 
+ipcRenderer.on("movie:remove", () => {
+  ipcRenderer.send("movie:getAll");
+});
+
 const initializeMovies = movies => {
   //Find the template & the container
   const moviesContainer = document.querySelector(".movies-container");
@@ -24,6 +28,13 @@ const initializeMovies = movies => {
     clone.setAttribute("id", movie.id);
     clone.querySelector("img").setAttribute("src", movie.img);
     clone.querySelector("h3").textContent = movie.name;
+    clone.querySelector("i").setAttribute("data-id", movie.id);
+    const stars = clone.querySelectorAll(".rating i");
+    let i = 0;
+    while (i < movie.rating) {
+      stars[i].classList.add("text-warning");
+      i++;
+    }
     moviesContainer.appendChild(clone);
   }
 };
@@ -36,4 +47,9 @@ function openMovie(id) {
 
 const newMovie = () => {
   ipcRenderer.send("movie:new");
+};
+
+const removeMovie = element => {
+  const id = element.getAttribute("data-id");
+  ipcRenderer.send("movie:remove", id);
 };
