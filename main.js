@@ -124,7 +124,7 @@ const menuTemplate = [
     label: "File",
     submenu: [
       {
-        label: "New Movie",
+        label: "New Movie/Game",
         accelerator: "Ctrl+N",
         click() {
           createNewMovieWindow();
@@ -145,3 +145,10 @@ const menuTemplate = [
 
 const menu = Menu.buildFromTemplate(menuTemplate);
 Menu.setApplicationMenu(menu);
+
+//Implementing my own store config
+//---------------------------------------------------------------------------
+// const Store = require("./store");
+// const store = new Store(undefined, { msg: "Hello" });
+// store.set("games", ["nier automata", "metal gear solid", "the witcher 3"]);
+// store.set("username", "Mohammed Taher ghazal");

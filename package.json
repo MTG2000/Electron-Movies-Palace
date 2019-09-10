@@ -1,7 +1,7 @@
 {
-  "name": "movies-diary",
-  "description": "A Movies Diary where you can keep track of all the movies you previousely watched",
-  "productName": "Movies Diary",
+  "name": "freetimes-diary",
+  "description": "A Diary where you can keep track of all movies & games you previousely watched/played",
+  "productName": "FreeTimes Diary",
   "version": "0.1.0",
   "main": "main.js",
   "homepage": "./",
