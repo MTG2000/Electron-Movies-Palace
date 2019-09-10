@@ -28,3 +28,7 @@ const handleSubmit = e => {
   const rating = slider.value;
   ipcRenderer.send("movie:add", { name, img, rating });
 };
+
+const closeWindow = () => {
+  ipcRenderer.send("newMovie:close");
+};

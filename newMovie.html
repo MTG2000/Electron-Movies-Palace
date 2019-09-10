@@ -16,6 +16,7 @@
       body {
         background: rgb(14, 13, 13);
         color: #fff;
+        border: solid 2px #bc069d;
       }
     </style>
   </head>
@@ -64,7 +65,16 @@
           <span id="rangeOutput" class="h4 ml-5 mr-2  text-primary"></span>
           <span class="text-secondary">/5 stars</span>
         </div>
-        <button type="submit" class="btn btn-primary btn-lg">Add Now</button>
+        <div class="d-flex justify-content-end mt-5">
+          <button type="submit" class="btn btn-primary btn-lg">Add Now</button>
+          <button
+            type="button"
+            class="btn btn-secondary mx-3 btn-lg"
+            onclick="closeWindow()"
+          >
+            Cancel
+          </button>
+        </div>
       </form>
     </div>
 

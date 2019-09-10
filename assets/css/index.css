@@ -15,6 +15,7 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
+  z-index: -100;
 }
 
 .overlayImage img {
@@ -80,6 +81,10 @@ nav {
   cursor: pointer;
 }
 
+.rating > i {
+  color: #000;
+}
+
 /* Slider Range style */
 .slidecontainer {
   width: 100%; /* Width of the outside container */
@@ -126,6 +131,7 @@ nav {
   background-color: #3333334d;
   border: 0;
   border-bottom: solid 2px #bc069d;
+  color: #eee;
 }
 
 .form-control:focus {

@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, dialog } = require("electron");
+const { app, BrowserWindow, ipcMain, dialog, Menu } = require("electron");
 const path = require("path");
 const uuidv1 = require("uuid/v1");
 
@@ -36,16 +36,21 @@ function createNewMovieWindow() {
     width: 800,
     height: 500,
     parent: mainWindow,
+    frame: false,
     modal: true, //This makes the parent window unfocusable until this one is closed
     webPreferences: { nodeIntegration: true } //This allows for node syntax on the front-end ( using 'require' for example)
   });
 
   newMovieWindow.loadFile("newMovie.html");
-  // newMovieWindow.removeMenu();
+  newMovieWindow.removeMenu();
   newMovieWindow.on("close", () => {
     newMovieWindow = null;
   });
 }
+
+ipcMain.on("newMovie:close", () => {
+  newMovieWindow.close();
+});
 
 ipcMain.on("movie:new", () => {
   createNewMovieWindow();
@@ -75,7 +80,7 @@ ipcMain.on("movie:remove", (_, id) => {
   const result = dialog.showMessageBoxSync(mainWindow, {
     type: "warning",
     title: "Remove Movie",
-    message: "Are You sure you wnat to remove this movie ",
+    message: "Are You sure you want to remove this movie ",
     buttons: ["Yes", "No"]
   });
   console.log(result);
@@ -100,3 +105,43 @@ ipcMain.on("image:open", () => {
   });
   newMovieWindow.webContents.send("image:get", fullPath);
 });
+
+const clearAll = () => {
+  const result = dialog.showMessageBoxSync(mainWindow, {
+    type: "warning",
+    title: "Clear All Movies",
+    message: "Are You sure you want to remove all movies ",
+    buttons: ["Yes", "No"]
+  });
+  if (result === 0) {
+    moviesData.clearAll();
+    mainWindow.webContents.send("movie:getAll", []);
+  }
+};
+
+const menuTemplate = [
+  {
+    label: "File",
+    submenu: [
+      {
+        label: "New Movie",
+        accelerator: "Ctrl+N",
+        click() {
+          createNewMovieWindow();
+        }
+      },
+      {
+        label: "Clear All",
+        click() {
+          clearAll();
+        }
+      },
+      { type: "separator" },
+      { role: "minimize" },
+      { role: "quit", accelerator: "Ctrl+Q" }
+    ]
+  }
+];
+
+const menu = Menu.buildFromTemplate(menuTemplate);
+Menu.setApplicationMenu(menu);
