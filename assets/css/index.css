@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "Acme";
+  src: url("../webfonts/Acme-Regular.ttf");
+}
+
 body {
   /* background: linear-gradient(
     40deg,
@@ -5,8 +10,7 @@ body {
     rgba(32, 19, 29, 0.63)
   ); */
   min-height: 100vh;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif "Trebuchet MS", sans-serif;
+  font-family: "Acme", sans-serif;
 }
 
 .overlayImage {
