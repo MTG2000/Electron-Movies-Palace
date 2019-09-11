@@ -25,10 +25,12 @@ const initializeMovies = movies => {
   //Create a movie card for each element and append it to the container
   for (let movie of movies) {
     const clone = movieTemplate.cloneNode(true);
-    clone.setAttribute("id", movie.id);
+    clone.querySelector(".movie-card").setAttribute("id", movie.id);
     clone.querySelector("img").setAttribute("src", movie.img);
     clone.querySelector("h3").textContent = movie.name;
-    clone.querySelector("i").setAttribute("data-id", movie.id);
+    clone.querySelectorAll("i[data-id]").forEach(element => {
+      element.setAttribute("data-id", movie.id);
+    });
     const stars = clone.querySelectorAll(".rating i");
     let i = 0;
     while (i < movie.rating) {
@@ -52,4 +54,9 @@ const newMovie = () => {
 const removeMovie = element => {
   const id = element.getAttribute("data-id");
   ipcRenderer.send("movie:remove", id);
+};
+
+const editMovie = element => {
+  const id = element.getAttribute("data-id");
+  ipcRenderer.send("movie:edit", id);
 };

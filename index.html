@@ -25,7 +25,7 @@
           ><span class="text-primary">F</span>reeTimes
           <span class="text-primary">D</span>iary</span
         >
-        <button class="btn btn-primary" onclick="newMovie()">
+        <button class="btn btn-primary btn-lg" onclick="newMovie()">
           <i class="fas fa-plus"></i> New Movie/Game
         </button>
       </div>
@@ -43,7 +43,18 @@
           <img src="" alt="" />
           <div class="overlay d-flex flex-column justify-content-center">
             <h3 class="text-center"></h3>
-            <h4><i class="fas fa-times" onclick="removeMovie(this)"></i></h4>
+            <h4>
+              <i
+                class="fas fa-times remove-icon"
+                data-id
+                onclick="removeMovie(this)"
+              ></i>
+              <i
+                class="fas fa-pencil-alt edit-icon"
+                data-id
+                onclick="editMovie(this)"
+              ></i>
+            </h4>
           </div>
         </div>
         <h4 class="row justify-content-center rating mb-5">

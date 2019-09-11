@@ -12,7 +12,17 @@ module.exports = {
     const data = store.get("movies", []);
     return data;
   },
-
+  updateMovie: newMovie => {
+    const data = store.get("movies", []);
+    const newData = data.map(movie => {
+      if (movie.id === newMovie.id) {
+        return newMovie;
+      }
+      return movie;
+    });
+    store.set("movies", newData);
+    return { success: true, data: store.get("movies") };
+  },
   addMovie: movie => {
     const data = store.get("movies", []);
     const newMovies = [movie, ...data];

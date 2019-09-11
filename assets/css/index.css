@@ -70,12 +70,20 @@ nav {
   opacity: 1;
 }
 
-.movie-card i {
+.movie-card .remove-icon {
   position: absolute;
   top: 20px;
   right: 20px;
   transition-duration: 0.4s;
 }
+
+.movie-card .edit-icon {
+  position: absolute;
+  top: 54px;
+  right: 15px;
+  transition-duration: 0.4s;
+}
+
 .movie-card i:hover {
   font-size: 1.2em;
   cursor: pointer;

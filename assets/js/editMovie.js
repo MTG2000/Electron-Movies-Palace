@@ -26,9 +26,19 @@ const handleSubmit = e => {
   const name = nameInput.value;
   const img = imgInput.value;
   const rating = slider.value;
-  ipcRenderer.send("movie:add", { name, img, rating });
+  ipcRenderer.send("movie:update", { id: movieId, name, img, rating });
 };
 
 const closeWindow = () => {
   ipcRenderer.send("subwindow:close");
 };
+
+let movieId;
+
+ipcRenderer.on("movie:editData", (_, { id, name, img, rating }) => {
+  nameInput.value = name;
+  imgInput.value = img;
+  slider.value = rating;
+  output.innerHTML = slider.value;
+  movieId = id;
+});

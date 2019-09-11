@@ -2,7 +2,6 @@ const { app } = require("electron");
 const fs = require("fs");
 const path = require("path");
 
-("user-prefs");
 module.exports = class Store {
   //----------------------
   constructor(fileName = "userPrefs", data = {}) {
